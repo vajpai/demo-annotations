@@ -25,22 +25,22 @@ public class App {
 	}
 	
 	public static void main(String[] args) {
+		//Validate the annotations
 		Product product = new Product();
-		product.setStoreNumber("12345");
+		product.setStoreNumber("1234");
 		Configuration<?> config = Validation.byDefaultProvider().configure();
         ValidatorFactory factory = config.buildValidatorFactory();
         Validator validator = factory.getValidator();
         validator.validate(product).stream().forEach(App::printError);
-        System.out.println("------End------");
         factory.close();
 		
-		
-		/*Class<Product> productClass = Product.class;
+        // read annotations
+		Class<Product> productClass = Product.class;
 		if (productClass.isAnnotationPresent(StoreNumber.class)) {
 			StoreNumber storeNumber = (StoreNumber) productClass.getAnnotation(StoreNumber.class);
-			System.out.println("<=====>" + storeNumber.message());
+			System.out.println("Store Number:" + storeNumber.message());
 		} else {
-			System.out.println("---annotation not present----");
+			System.out.println("---annotation not present in the class level----");
 		}
 
 		Method[] methods = productClass.getMethods();
@@ -48,9 +48,7 @@ public class App {
 			StoreNumber storeNumberannotation = method.getAnnotation(StoreNumber.class);
 			if (null != storeNumberannotation) {
 				System.out.println("Method Level Annotation==>" + storeNumberannotation.message());
-			} else {
-				System.out.println("----not found--");
 			}
-		}*/
+		}
 	}
 }

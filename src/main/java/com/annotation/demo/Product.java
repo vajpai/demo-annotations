@@ -1,5 +1,4 @@
 package com.annotation.demo;
-//@StoreNumber
 public class Product {
 
 	private String productName;
@@ -12,7 +11,6 @@ public class Product {
 	public void setProductName(String productName) {
 		this.productName = productName;
 	}
-	//@StoreNumber
 	public String getStoreNumber() {
 		return storeNumber;
 	}
